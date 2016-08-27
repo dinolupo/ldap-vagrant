@@ -24,7 +24,7 @@ Also check the [OpenLDAP Server documentation at the Ubuntu Server Guide](https:
 
 The environment comes pre-configured with the following entries:
 
-		cn=admin,dc=vagrant,dc=dev
+    cn=admin,dc=vagrant,dc=dev
     uid=alice,ou=people,dc=vagrant,dc=dev
     uid=bob,ou=people,dc=vagrant,dc=dev
     uid=carol,ou=people,dc=vagrant,dc=dev
@@ -38,7 +38,7 @@ To see how these were added take a look at the end of the [provision.sh](provisi
 
 To troubleshoot, watch the logs with `vagrant ssh` and `sudo journalctl --follow`.
 
-4) Go to [http://ldap.vagrant.dev/phpldapadmin]()
+4) Go to [http://ldap.vagrant.dev/phpldapadmin](http://ldap.vagrant.dev/phpldapadmin)
 
 Default password is "password" without quotes.
 You can change admin and users passwords at the top of the `provision.sh` file.
