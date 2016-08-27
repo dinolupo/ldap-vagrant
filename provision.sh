@@ -7,6 +7,7 @@ config_domain=$(hostname --domain)
 config_domain_dc="dc=$(echo $config_domain | sed 's/\./,dc=/g')"
 config_admin_dn="cn=admin,$config_domain_dc"
 config_admin_password=password
+config_users_password=password
 
 echo "127.0.0.1 $config_fqdn" >>/etc/hosts
 
@@ -54,7 +55,7 @@ function add_person {
     ldapadd -D $config_admin_dn -w $config_admin_password <<EOF
 dn: uid=$name,ou=people,$config_domain_dc
 objectClass: inetOrgPerson
-userPassword: $(slappasswd -s password)
+userPassword: $(slappasswd -s $config_users_password)
 uid: $name
 mail: $name@$config_domain
 cn: $name doe
