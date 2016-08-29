@@ -34,6 +34,16 @@ The environment comes pre-configured with the following entries:
     uid=grace,ou=people,dc=vagrant,dc=dev
     uid=henry,ou=people,dc=vagrant,dc=dev
 
+Two groups (`groupOfNames` objectClass) are provisioned: 
+
+1) `cn=clients,dc=vagrant,dc=dev`
+
+with members: alice, bob, carol and dave users
+
+2)	`cn=backoffice,dc=vagrant,dc=dev`
+
+with members: eve, frank, grace and henry users
+
 To see how these were added take a look at the end of the [provision.sh](provision.sh) file.
 
 To troubleshoot, watch the logs with `vagrant ssh` and `sudo journalctl --follow`.

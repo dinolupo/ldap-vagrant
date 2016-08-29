@@ -71,6 +71,26 @@ for n in "${!people[@]}"; do
     add_person $n "${people[$n]}"
 done
 
+# create the group "clients" with some users in it.
+ldapadd -D $config_admin_dn -w $config_admin_password <<EOF
+dn: cn=clients,$config_domain_dc
+objectClass: groupOfNames
+member: uid=alice,ou=people,$config_domain_dc
+member: uid=bob,ou=people,$config_domain_dc
+member: uid=carol,ou=people,$config_domain_dc
+member: uid=dave,ou=people,$config_domain_dc
+EOF
+
+# create the group "backoffice" with some users in it.
+ldapadd -D $config_admin_dn -w $config_admin_password <<EOF
+dn: cn=backoffice,$config_domain_dc
+objectClass: groupOfNames
+member: uid=eve,ou=people,$config_domain_dc
+member: uid=frank,ou=people,$config_domain_dc
+member: uid=grace,ou=people,$config_domain_dc
+member: uid=henry,ou=people,$config_domain_dc
+EOF
+
 # show the configuration tree.
 ldapsearch -Q -LLL -Y EXTERNAL -H ldapi:/// -b cn=config dn | grep -v '^$'
 
